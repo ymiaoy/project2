@@ -32,7 +32,7 @@ bool handle_drive_request(ball_chaser::DriveToTarget::Request& req, ball_chaser:
 
     motor_command_publisher.publish(robot_msg);
 
-    ros::Duration(3).sleep();
+    ros::Duration(1).sleep();
     res.msg_feedback = "wheel linear set - linear_x: " + std::to_string(robot_msg.linear.x) + " , angular_z: " + std::to_string(robot_msg.angular.z);
     ROS_INFO_STREAM(res.msg_feedback);
 
@@ -49,7 +49,7 @@ int main(int argc, char** argv)
     ros::init(argc, argv, "drive_bot");
     ros::NodeHandle n;
 
-    motor_command_publisher = n.advertise<geometry_msgs::Twist>("/cmd_vel", 20);
+    motor_command_publisher = n.advertise<geometry_msgs::Twist>("/cmd_vel", 1000);
 
     ros::ServiceServer server = n.advertiseService("/ball_chaser/command_robot", &handle_drive_request);
 
