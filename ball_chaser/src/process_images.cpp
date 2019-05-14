@@ -60,12 +60,14 @@ void process_image_callback(const sensor_msgs::Image& img) {
                 if (ball_column < 200) {
                     ROS_INFO_STREAM("turn left");
                     drive_robot(0.0, 0.5);
+                    return;
                 }
 
                     // right
                 else if (ball_column > 500) {
                     ROS_INFO_STREAM("turn right");
                     drive_robot(0.0, -0.5);
+                    return;
                 }
 
                 drive_robot(0.5, 0);
