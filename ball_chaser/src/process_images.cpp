@@ -75,7 +75,7 @@ void process_image_callback(const sensor_msgs::Image& img) {
     }
     if (!pixel_is_white){
         drive_robot(0.0, 0.0);
-        drive_robot(0.0, -1.0);
+        //drive_robot(0.0, -1.0);
         return;
     }
 }
